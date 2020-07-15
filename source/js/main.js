@@ -15,10 +15,10 @@ window.onload = (function() {
     /*List */
 
     CreateListItems();
-    /*showFirstPhotoHero();
-    setInterval(change_photo,20000);*/
-    fix_main_menu();
-    FillSellList();
+    showFirstPhotoHero();
+    setInterval(change_photo,20000);
+    /*fix_main_menu();
+    FillSellList();*/
 
     //console.log(sell_list);
 
