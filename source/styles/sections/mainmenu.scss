@@ -1,0 +1,49 @@
+.main__menu{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  flex-wrap: wrap;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  border: 1px solid black;
+  position: relative;
+  background-color: black;
+}
+
+.main__list{
+  margin: 5px;
+  vertical-align: top;
+  color: white;
+  font: $ff-main-light;
+  font-size: 20px;
+  padding: 10px;
+  letter-spacing: 0.2rem;
+  list-style: none;
+  cursor: pointer;
+
+  &:hover {
+    color: darken(white,30%);
+    transition: 1s;
+  }
+
+  &.list--sale{
+    color: red;
+
+    &:hover {
+      color: darken(red,30%);
+      transition: 1s;
+      cursor: pointer;
+    }
+
+  }
+
+  @media (max-width: 800px) {
+    padding: 15px 5px 5px;
+
+    &:first-child {
+      display: none;
+    }
+  }
+}
+

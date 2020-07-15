@@ -1,0 +1,22 @@
+.footer__menu{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  text-align: center;
+  position: relative;
+}
+
+.footer__list{
+  vertical-align: top;
+  font-weight: bold;
+  color: darkslategray;
+  padding: 10px;
+  list-style: none;
+
+  &:hover {
+    color: darken(white,30%);
+    transition: 2s;
+    cursor: pointer;
+  }
+}

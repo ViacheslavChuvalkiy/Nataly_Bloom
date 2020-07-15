@@ -1,0 +1,10 @@
+nav.nav
+    a.cart(href="#")
+        i.fa.fa-opencart.contact__icon.contact__icon--cart(aria-hidden="true")
+    -var items = ['Главная', 'О нас', 'Контакты']
+                        each item in items
+                            if item === 'Главная'
+                                a.nav__link.nav__link--active(href="#")= item
+                            else
+                                a.nav__link(href="#")= item
+
