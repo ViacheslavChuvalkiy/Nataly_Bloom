@@ -32,6 +32,14 @@ gulp.task('template:compile', function buildHTML() {
         .pipe(gulp.dest('build/'))
 });
 
+gulp.task('template:sale', function buildHTML() {
+    return gulp.src("source/template/sale_page.pug")
+        .pipe(pug({
+            pretty: true
+        }))
+        .pipe(gulp.dest('build/pages/'))
+});
+
 /* ------------ Styles compile ------------- */
 gulp.task('styles:compile', function () {
     return gulp.src('source/styles/main.scss')
@@ -95,7 +103,7 @@ gulp.task('watch', function() {
 
 gulp.task('default', gulp.series(
     'clean',
-    gulp.parallel('template:compile', 'styles:compile', 'js', 'sprite', 'copy'),
+    gulp.parallel('template:compile', 'template:sale', 'styles:compile', 'js', 'sprite', 'copy'),
     gulp.parallel('watch', 'server')
     )
 );

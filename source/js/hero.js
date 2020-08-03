@@ -28,39 +28,20 @@ function CreateListItems() {
 
 }
 
-function change_photo(event) {
+function change_main_photo(event) {
 
-    var herosection = $('.hero-img');
+    var herosection = $('.hero-img').attr("src");
 
-    var count_img = herosection.length;
+    var index_current_img = list_main_photo.indexOf(herosection);
 
-    for (var i = 0; i < count_img; i++) {
+   if (list_main_photo.length == index_current_img + 1) {
 
-        var img_veiw = $(herosection[i]).css('display');
+       $('.hero-img').attr("src", list_main_photo[0]);
+   }
+   else {
+       $('.hero-img').attr("src", list_main_photo[index_current_img + 1]);
+       }
 
-        if (img_veiw != "none") {
-            $(herosection[i]).hide();
-            if(i + 1 == count_img){
-                $(herosection[0]).show();
-            }
-            else {
-                $(herosection[i + 1]).show();
-            }
-            break;
-        }
-        else if(i + 1 == count_img) {
-            $(herosection[0]).show();
-        }
-        else {
-            continue;
-        }
-    }
-
-}
-
-function showFirstPhotoHero() {
-    var herosection = $('.hero-img');
-    $(herosection[0]).show();
 }
 
 function FillSellList() {

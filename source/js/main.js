@@ -1,6 +1,9 @@
 
 var sell_list;
 
+var list_main_photo;
+
+
 window.onload = (function() {
 
     var nav_item = $('.nav__link');
@@ -15,12 +18,14 @@ window.onload = (function() {
     /*List */
 
     CreateListItems();
-    showFirstPhotoHero();
-    setInterval(change_photo,20000);
+    CreateMainPhotoList();
+    setInterval(change_main_photo,20000);
     /*fix_main_menu();
     FillSellList();*/
 
-    //console.log(sell_list);
+    function CreateMainPhotoList() {
+        list_main_photo = ["images/carusel/img_1.jpg","images/carusel/img_2.jpg","images/carusel/img_3.jpg","images/carusel/img_4.jpg"];
+    }
 
 });
 
