@@ -3,6 +3,8 @@ var sell_list;
 
 var list_main_photo;
 
+var user_log_in;
+
 
 window.onload = (function() {
 
@@ -20,6 +22,8 @@ window.onload = (function() {
     CreateListItems();
     CreateMainPhotoList();
     setInterval(change_main_photo,20000);
+
+    setClick_Button_User();
     /*fix_main_menu();
     FillSellList();*/
 

@@ -4,8 +4,8 @@
     <meta charset="UTP=8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="../css/main.min.css">
-    <link rel="icon" href="../images/icons/nataly_icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="icon" href="images/icons/nataly_icon.ico" type="image/x-icon">
     <title>"Nataly Bloom"</title>
   </head>
 </html>
@@ -14,19 +14,37 @@
   <div class="logo"><img class="logo__picture" src="images/logo_1.jpeg" alt="picture"><img class="logo__picture" src="images/logo_2.jpeg" alt="picture"></div>
   <div class="header__top">
     <div class="container">
-      <div class="contacts"><a class="contact" href="tel: +38063 304 4222"><i class="fa fa-mobile contact__icon" aria-hidden="true"></i><span class="contact__text">+38063 304 4222</span></a><a class="contact" href="mailto: office.natalybloom@gmail.com" target="_blank"><i class="fa fa-envelope contact__icon contact__icon--email" aria-hidden="true"></i><span class="contact__text">office.natalybloom@gmail.com</span></a><a class="contact" href="https://www.facebook.com/natalybloombrand/" target="_blank"><i class="fa fa-facebook facebook-icon" aria-hidden="true"></i></a><a class="contact" href="https://instagram.com/nataly_bloom_ua?igshid=veen24yyi34p" target="_blank"><i class="fa fa-instagram instagram-icon" aria-hidden="true"></i></a></div>
+      <div class="contacts"><a class="contact" href="tel: +38063 304 4222"><i class="fa fa-mobile contact__icon" aria-hidden="true"></i><span class="contact__text">+38063 304 4222</span></a><a class="contact" href="mailto: office.natalybloom@gmail.com" target="_blank"><i class="fa fa-envelope contact__icon contact__icon--email" aria-hidden="true"></i><span class="contact__text">office.natalybloom@gmail.com</span></a><a class="contact" href="https://www.facebook.com/natalybloombrand/" target="_blank"><i class="fa fa-facebook facebook-icon" aria-hidden="true"></i></a><a class="contact" href="https://instagram.com/nataly_bloom_ua?igshid=veen24yyi34p" target="_blank"><i class="fa fa-instagram instagram-icon" aria-hidden="true"></i></a><a class="contact sign_in"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+          <div class="user_authorization">
+            <button class="btn_user btn_sign_in" value="menu_sign_in">Войти</button>
+            <button class="btn_user btn_registration" value="menu_registration">Регистрация</button>
+          </div></a></div>
     </div>
   </div>
   <div class="header__bottom">
     <div class="container">
-      <nav class="nav"><a class="cart" href="#"><i class="fa fa-opencart contact__icon contact__icon--cart" aria-hidden="true"></i></a><a class="nav__link nav__link--active" href="../index.html">Главная</a><a class="nav__link" href="/pages/sale_page.html">Лукбук</a><a class="nav__link" href="#">Акции</a><a class="nav__link" href="#">Sale</a><a class="nav__link" href="#">Про нас</a>
+      <nav class="nav"><a class="cart" href="#"><i class="fa fa-opencart contact__icon contact__icon--cart" aria-hidden="true"></i></a><a class="nav__link nav__link--active" href="/">Главная</a><a class="nav__link" href="/sale_page">Лукбук</a><a class="nav__link" href="#">Акции</a><a class="nav__link" href="#">Sale</a><a class="nav__link" href="#">Про нас</a>
       </nav>
     </div>
   </div>
-  <!--.header_mainmenu
-  .container
-      include mainmenu*/
-  -->
+  <form class="menu_user menu_user_sign_in" action="/autorization" method="POST"><i class="fa fa-times-circle fa-2x menu_user_close"></i><a class="user_menu_choice user_menu_choice_sign" id="menu_sign_in">Войти</a><a class="user_menu_choice user_menu_choice_reg" id="menu_registration">Регистрация</a>
+    <div class="menu_sign_in">
+      <input class="user_sign_in_menu user_login" id="email" name="email" type="email" placeholder="e-mail" required>
+      <input class="user_sign_in_menu user_pass" id="password" name="password" type="password" placeholder="Пароль" required>
+      <button class="btn_sign_in_menu btn_sign_in" type="submit" id="sign_in"> Войти</button><a class="btn_sign_in_menu btn_forgot_passw">Забыли пароль?</a>
+    </div>
+  </form>
+  <form class="menu_user menu_user_registration" action="/addUser" method="POST"><i class="fa fa-times-circle fa-2x menu_user_close"></i><a class="user_menu_choice user_menu_choice_sign" id="menu_sign_in">Войти</a><a class="user_menu_choice user_menu_choice_reg" id="menu_registration">Регистрация</a>
+    <div class="menu_registration">
+      <input class="user_sign_in_menu user_login" id="email" name="email" type="email" placeholder="e-mail">
+      <input class="user_sign_in_menu user_login" id="name" name="name" type="text" placeholder="e-mail">
+      <input class="user_sign_in_menu user_pass" id="password" name="password" type="password" placeholder="Пароль">
+      <input class="user_sign_in_menu user_pass" id="password2" name="password2" type="password" placeholder="повторите пароль">
+      <input class="user_sign_in_menu user_phone" id="phone" name="phone" type="text" placeholder="номер телефона">
+      <button class="btn_sign_in_menu btn_reg_in" type="submit" id="registration"> Регистрация</button>
+      <button class="btn_sign_in_menu menu_user_close">Отмена</button>
+    </div>
+  </form>
 </header>
 <container_hero>
   <section class="sidebar">
@@ -93,6 +111,9 @@
     <li class="footer__list">Follow us+</li>
   </ul>
 </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="js/main.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="js/main.min.js"></script>

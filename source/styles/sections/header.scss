@@ -22,7 +22,7 @@
 
 .contact {
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
   padding: 10px 10px 8px;
   color: #424242;
   transition: 0.3s;
@@ -35,6 +35,7 @@
     margin-right: 8px;
     padding-right: 18px;
     border-right: 1px solid #e2e2e2;
+    vertical-align: bottom;
   }
 
   &__icon{
@@ -97,3 +98,78 @@
   border-radius: 3px;
   color: orangered;
 }
+
+.menu_user{
+  display: none;
+  position: absolute;
+  text-align: -webkit-center;
+  z-index: 1000;
+  width: 25%;
+  min-height: 210px;
+  height: 100%;
+  left: 45%;
+  top: 55px;
+  border: blueviolet 1px solid;
+
+  .menu_user_close{
+    position: relative;
+    float: right;
+    top: -8px;
+    left: 4px;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  .user_sign_in_menu{
+    display: block;
+    position: relative;
+    margin: 10px;
+    width: 80%;
+
+  }
+
+  .btn_sign_in_menu{
+    display: inline-block;
+    position: relative;
+    float: initial;
+    top: 25px;
+    left: 10px;
+    width: 40%;
+    margin: 10px;
+    right: 5px;
+
+  }
+
+  .btn_forgot_passw{
+
+   &:hover{
+     cursor: pointer;
+     text-decoration: underline;
+   }
+
+  }
+
+}
+
+.user_menu_choice{
+
+  @include button-reset;
+
+  display: inline-block;
+  padding: 0px 15px 3px 5px;
+  color: #482E6B;
+  letter-spacing: 0.1rem;
+  font-size: 22px;
+  font-family: $ff-main-bold;
+  text-decoration: none;
+
+  &:focus{
+    border: 0;
+    outline: none;
+  }
+
+}
+
+

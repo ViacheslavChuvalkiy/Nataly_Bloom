@@ -20,3 +20,33 @@
     cursor: pointer;
   }
 }
+
+.sign_in{
+  margin-right: 20px;
+  top: -5px;
+
+  &:hover {
+
+    .user_authorization{
+      display: block;
+    }
+  }
+
+}
+
+.user_authorization{
+  display: none;
+  position: absolute;
+  transition: 0.5s;
+  right: 20px;
+  top: 33px;
+  height: 55px;
+
+  .btn_user{
+    margin-top: 25px;
+    margin-left: 5px;
+    min-width: 85px;
+    height: 30px;
+  }
+
+}

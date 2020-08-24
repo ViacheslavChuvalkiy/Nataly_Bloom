@@ -1,0 +1,12 @@
+form(action="/addUser", method= 'POST').menu_user.menu_user_registration
+    i.fa.fa-times-circle.fa-2x.menu_user_close
+    a.user_menu_choice.user_menu_choice_sign(id='menu_sign_in') Войти
+    a.user_menu_choice.user_menu_choice_reg(id='menu_registration') Регистрация
+    div.menu_registration
+        input.user_sign_in_menu.user_login(id = 'email',   name = 'email',     type = "email",   placeholder = "e-mail")
+        input.user_sign_in_menu.user_login(id = 'name',   name = 'name',       type = "text",      placeholder = "Ваше ФИО")
+        input.user_sign_in_menu.user_pass(id = 'password', name = 'password',  type = "password",placeholder = "Пароль")
+        input.user_sign_in_menu.user_pass(id = 'password2',name = 'password2', type = "password",placeholder = "повторите пароль")
+        input.user_sign_in_menu.user_phone(id = 'phone',   name = 'phone',     type = "text",    placeholder = "номер телефона")
+        button.btn_sign_in_menu.btn_reg_in(type = "submit", id='registration')  Регистрация
+        button.btn_sign_in_menu.menu_user_close Отмена

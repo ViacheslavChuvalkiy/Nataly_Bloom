@@ -10,13 +10,52 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
 
+const express = require('express');
+const mongoose = require('mongoose');
+const path = require('path');
+const app = express();
+app.use(express.urlencoded({extended:true}));
+
+const addUsers = require(path.join(__dirname, "build", "routes",'addUser'));
+//const users_sign_in = require(path.join(__dirname, "build", "routes",'authorization'));
+//const users_order = require(path.join(__dirname, "build", "routes",'order'));
+
+app.use(express.static('./build'));
+app.set("view engine", "pug");
+app.set("view", "pages");
+
+app.use('/addUser', addUsers);
+//app.use('/autorization', users_sign_in);
+//app.use('/order', users_order);
+
+app.get('/', (req,res) => [
+    res.sendfile(path.join(__dirname,"build","pages",'index.html'))
+]);
+
+app.get('/sale_page', (req,res) => [
+    res.sendfile(path.join(__dirname,"build","pages",'sale_page.html'))
+]);
+
+async function start_server(){
+
+    const url = 'mongodb+srv://admin_site:r2d2c3po@cluster0.ce3gh.gcp.mongodb.net/shop_Nataly_Bloom';
+    await mongoose.connect(url,{
+        useNewUrlParser: true}
+        )
+    app.listen('3001');
+
+}
+
+start_server();
+
 
 /* -------- Server  -------- */
 gulp.task('server', function() {
     browserSync.init({
         server: {
-            port: 9000,
-            baseDir: "build"
+            port: 3000,
+            baseDir: "build",
+            notify: true
         }
     });
 
@@ -29,7 +68,7 @@ gulp.task('template:compile', function buildHTML() {
         .pipe(pug({
             pretty: true
         }))
-        .pipe(gulp.dest('build/'))
+        .pipe(gulp.dest('build/pages/'))
 });
 
 gulp.task('template:sale', function buildHTML() {
@@ -91,8 +130,25 @@ gulp.task('js', function () {
         .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('build/js'));
-})
+});
 
+gulp.task('js_routes', function () {
+    return gulp.src(['./source/routes/addUser.js', './source/routes/authorization.js', './source/routes/order.js'])
+        // .pipe(sourcemaps.init())
+        // .pipe(concat('addUser.min.js'))
+        // .pipe(uglify())
+        // .pipe(sourcemaps.write())
+        .pipe(gulp.dest('build/routes'));
+});
+
+gulp.task('js_models', function () {
+    return gulp.src(['./source/models/add_users.js'])  //,'./source/models/order.js'
+        .pipe(sourcemaps.init())
+        .pipe(concat('add_users.min.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('build/models'));
+});
 
 /* ------------ Watchers ------------- */
 gulp.task('watch', function() {
@@ -103,7 +159,7 @@ gulp.task('watch', function() {
 
 gulp.task('default', gulp.series(
     'clean',
-    gulp.parallel('template:compile', 'template:sale', 'styles:compile', 'js', 'sprite', 'copy'),
+    gulp.parallel('template:compile', 'template:sale', 'styles:compile', 'js','js_models','js_routes', 'sprite', 'copy'),
     gulp.parallel('watch', 'server')
     )
 );
