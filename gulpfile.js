@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended:true}));
 
 const addUsers = require(path.join(__dirname, "build", "routes",'addUser'));
 //const users_sign_in = require(path.join(__dirname, "build", "routes",'authorization'));
-//const users_order = require(path.join(__dirname, "build", "routes",'order'));
+//const add_to_cart = require(path.join(__dirname, "build", "routes",'sale_item'));
 
 app.use(express.static('./build'));
 app.set("view engine", "pug");
@@ -26,7 +26,7 @@ app.set("view", "pages");
 
 app.use('/addUser', addUsers);
 //app.use('/autorization', users_sign_in);
-//app.use('/order', users_order);
+//app.use('/addtocart', add_to_cart);
 
 app.get('/', (req,res) => [
     res.sendfile(path.join(__dirname,"build","pages",'index.html'))
@@ -133,7 +133,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('js_routes', function () {
-    return gulp.src(['./source/routes/addUser.js', './source/routes/authorization.js', './source/routes/order.js'])
+    return gulp.src(['./source/routes/addUser.js', './source/routes/authorization.js', './source/routes/sale_item.js'])
         // .pipe(sourcemaps.init())
         // .pipe(concat('addUser.min.js'))
         // .pipe(uglify())
@@ -142,7 +142,7 @@ gulp.task('js_routes', function () {
 });
 
 gulp.task('js_models', function () {
-    return gulp.src(['./source/models/add_users.js'])  //,'./source/models/order.js'
+    return gulp.src(['./source/models/add_users.js'])  //,'./source/models/sale_item.js'
         .pipe(sourcemaps.init())
         .pipe(concat('add_users.min.js'))
         .pipe(uglify())

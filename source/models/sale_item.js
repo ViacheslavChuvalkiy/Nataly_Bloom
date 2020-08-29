@@ -21,4 +21,4 @@ var SchemaSaleItems = mongoose.Schema(
         }
     });
 
-module.exports = mongoose.model('SaleItem',SchemaSaleItems);
+module.exports = mongoose.model('TemporaryCart',SchemaSaleItems);
