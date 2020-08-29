@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Users = require('../models/add_users.min');
+var Users = require('../models/add_users');
 
 router.post('/', async (req,res)=> {
 
