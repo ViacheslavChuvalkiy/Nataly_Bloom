@@ -4,7 +4,6 @@ var Users = require('../models/add_users.min');
 
 router.post('/', async (req,res)=> {
 
-    //console.log(req.body);
     var user = new Users({
         email:    req.body.email,
         password: req.body.password,
