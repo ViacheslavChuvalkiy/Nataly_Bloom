@@ -16,7 +16,7 @@ const path = require('path');
 const app = express();
 app.use(express.urlencoded({extended:true}));
 
-//const addUsers = require(path.join(__dirname, "build", "routes",'addUser'));
+const addUsers = require(path.join(__dirname, "build", "routes",'addUser'));
 //const users_sign_in = require(path.join(__dirname, "build", "routes",'authorization'));
 //const add_to_cart = require(path.join(__dirname, "build", "routes",'sale_item'));
 
@@ -24,7 +24,7 @@ app.use(express.static('./build'));
 app.set("view engine", "pug");
 app.set("view", "pages");
 
-//app.use('/addUser', addUsers);
+app.use('/addUser', addUsers);
 //app.use('/autorization', users_sign_in);
 //app.use('/addtocart', add_to_cart);
 
