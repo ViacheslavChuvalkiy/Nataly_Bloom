@@ -13,10 +13,13 @@ const sourcemaps = require('gulp-sourcemaps');
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+//const fileMiddleware = require('./build/models/file');
+
 const app = express();
 app.use(express.urlencoded({extended:true}));
 
 const addUsers = require(path.join(__dirname, "build", "routes",'addUser'));
+//const add_sale_item_admin = require(path.join(__dirname, "build", "routes",'add_sale_item_admin'));
 //const users_sign_in = require(path.join(__dirname, "build", "routes",'authorization'));
 //const add_to_cart = require(path.join(__dirname, "build", "routes",'sale_item'));
 
@@ -24,7 +27,11 @@ app.use(express.static('./build'));
 app.set("view engine", "pug");
 app.set("view", "pages");
 
+
 app.use('/addUser', addUsers);
+//app.use( fileMiddleware.single('choice_img'));
+//app.use('/add_sale_item_admin', add_sale_item_admin);
+
 //app.use('/autorization', users_sign_in);
 //app.use('/addtocart', add_to_cart);
 
@@ -34,6 +41,10 @@ app.get('/', (req,res) => [
 
 app.get('/sale_page', (req,res) => [
     res.sendfile(path.join(__dirname,"build","pages",'sale_page.html'))
+]);
+
+app.get('/admin', (req,res) => [
+    res.sendfile(path.join(__dirname,"build","pages",'admin.html'))
 ]);
 
 async function start_server(){
@@ -73,6 +84,14 @@ gulp.task('template:compile', function buildHTML() {
 
 gulp.task('template:sale', function buildHTML() {
     return gulp.src("source/template/sale_page.pug")
+        .pipe(pug({
+            pretty: true
+        }))
+        .pipe(gulp.dest('build/pages/'))
+});
+
+gulp.task('template:sale', function buildHTML() {
+    return gulp.src("source/template/admin.pug")
         .pipe(pug({
             pretty: true
         }))
@@ -124,7 +143,7 @@ gulp.task('copy', gulp.parallel('copy:fonts', 'copy:images'));
 /* ------------ js ------------- */
 
 gulp.task('js', function () {
-    return gulp.src(['./source/js/init.js','./source/js/navigation.js','./source/js/hero.js','./source/js/main.js'])
+    return gulp.src(['./source/js/init.js','./source/js/navigation.js','./source/js/hero.js','./source/js/admin_page.js','./source/js/main.js'])
         .pipe(sourcemaps.init())
         .pipe(concat('main.min.js'))
         .pipe(uglify())
@@ -142,7 +161,7 @@ gulp.task('js_routes', function () {
 });
 
 gulp.task('js_models', function () {
-    return gulp.src(['./source/models/add_users.js'])  //,'./source/models/sale_item.js'
+    return gulp.src(['./source/models/add_users.js','./source/models/file.js'])  //,'./source/models/sale_item.js'
         // .pipe(sourcemaps.init())
         // .pipe(concat('add_users.min.js'))
         // .pipe(uglify())

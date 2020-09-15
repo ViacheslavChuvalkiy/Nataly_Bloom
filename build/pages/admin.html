@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTP=8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="icon" href="images/icons/nataly_icon.ico" type="image/x-icon">
+    <title>"Nataly Bloom"</title>
+  </head>
+</html>
+<body></body>
+<div class="sidebar_admin">
+  <ul class="sidebar_admin_ul"></ul>
+</div>
+<container class="add_sale_items"><a>Добавить товар</a>
+  <form class="add_sale_items_form" action="/add_sale_item_admin" method="POST" enctype="multipart/form-data">
+    <div class="main_image_admin_form">
+      <p>Основное фото товара</p>
+    </div>
+    <input id="input_img" name="input_img" type="file" alt="Выбрать основное фото товара" accept="image/jpeg,image/png,image/gif" required>
+    <p class="additions_photo">Фото товара</p>
+    <div class="others_image_admin_form"></div>
+    <input id="input_other_img" name="input_other_img" type="file" alt="Выбрать фото товара" accept="image/jpeg,image/png,image/gif" multiple required>
+    <button class="btn_clear" id="clear_photo">Очистить</button>
+    <div class="main_options_admin_form">
+      <p>Описание товара</p>
+      <select>
+        <option>Категория
+          <option value="Блузы" id="category" name="category" required>Блузы</option>
+          <option value="Рубашки" id="category" name="category" required>Рубашки</option>
+          <option value="Платья" id="category" name="category" required>Платья</option>
+          <option value="Юбки" id="category" name="category" required>Юбки</option>
+          <option value="Брюки" id="category" name="category" required>Брюки</option>
+          <option value="Джемперы" id="category" name="category" required>Джемперы</option>
+          <option value="Свитеры" id="category" name="category" required>Свитеры</option>
+          <option value="Кардиганы" id="category" name="category" required>Кардиганы</option>
+          <option value="Кофты" id="category" name="category" required>Кофты</option>
+          <option value="Пиджаки" id="category" name="category" required>Пиджаки</option>
+          <option value="Костюмы" id="category" name="category" required>Костюмы</option>
+        </option>
+      </select>
+      <textarea id="tittle" name="tittle" type="text" placeholder="Введите наименование" required></textarea>
+      <textarea id="describe" name="describe" type="text" placeholder="Введите описание" required></textarea>
+      <input id="price" name="price" type="number" step="50" placeholder="Введите цену" required>
+    </div>
+    <button class="btn_add" type="submit" id="add_item"> Добавить</button>
+  </form>
+</container>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="js/main.min.js"></script>

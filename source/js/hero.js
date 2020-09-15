@@ -2,7 +2,7 @@
 function CreateListItems() {
 
     var main__list = $('.sidebar-menu');
-    var list = ['Блузы', 'Рубашки', 'Платья', 'Юбки', 'Брюки', 'Джемперы', 'Свитеры', 'Кардиганы', 'Кофты', 'Пиджаки', 'Костюмы'];
+    category_list = ['Блузы', 'Рубашки', 'Платья', 'Юбки', 'Брюки', 'Джемперы', 'Свитеры', 'Кардиганы', 'Кофты', 'Пиджаки', 'Костюмы'];
 
     for (var i = 0; i< main__list.length; i++) {
 
@@ -12,7 +12,7 @@ function CreateListItems() {
             continue;
         }
 
-        for (var c =0; c < list.length; c++) {
+        for (var c =0; c < category_list.length; c++) {
 
             var child = document.createElement("li");
             child.classList.add('sidebar-menu');

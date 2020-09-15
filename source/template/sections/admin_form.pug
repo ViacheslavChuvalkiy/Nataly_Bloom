@@ -1,0 +1,28 @@
+
+div.sidebar_admin
+    ul.sidebar_admin_ul
+
+container.add_sale_items
+    a Добавить товар
+    form(action="/add_sale_item_admin", method= 'POST' enctype="multipart/form-data").add_sale_items_form
+
+        div.main_image_admin_form
+            p Основное фото товара
+        input(id = 'input_img', name = 'input_img', type = "file", alt= 'Выбрать основное фото товара', accept="image/jpeg,image/png,image/gif" required)
+
+        p.additions_photo Фото товара
+        div.others_image_admin_form
+        input(id = 'input_other_img', name = 'input_other_img', type = "file", alt= 'Выбрать фото товара', accept="image/jpeg,image/png,image/gif" multiple required)
+        button.btn_clear(id='clear_photo') Очистить
+
+        div.main_options_admin_form
+            p Описание товара
+            select
+                option Категория
+                    each item,index in ['Блузы', 'Рубашки', 'Платья', 'Юбки', 'Брюки', 'Джемперы', 'Свитеры', 'Кардиганы', 'Кофты', 'Пиджаки', 'Костюмы']
+                        option(value = item, id = 'category', name = 'category',  required) #{item}
+            textarea(id = 'tittle', name = 'tittle', type = "text", placeholder = "Введите наименование" required )
+            textarea(id = 'describe', name = 'describe', type = "text", placeholder = "Введите описание" required )
+            input(id = 'price', name = 'price', type = "number", step= '50', placeholder = "Введите цену" required)
+
+        button.btn_add(type = "submit", id='add_item')  Добавить
