@@ -13,27 +13,34 @@ const sourcemaps = require('gulp-sourcemaps');
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-//const fileMiddleware = require('./build/models/file');
+
 
 const app = express();
 app.use(express.urlencoded({extended:true}));
 
 const addUsers = require(path.join(__dirname, "build", "routes",'addUser'));
-//const add_sale_item_admin = require(path.join(__dirname, "build", "routes",'add_sale_item_admin'));
+const addFile = require(path.join(__dirname, "build", "routes",'addFile'));
+const add_sale_item_base = require(path.join(__dirname, "build", "routes",'add_sale_item_base'));
+const fileMiddleware = require('./build/models/file_middleware');
+
 //const users_sign_in = require(path.join(__dirname, "build", "routes",'authorization'));
 //const add_to_cart = require(path.join(__dirname, "build", "routes",'sale_item'));
 
 app.use(express.static('./build'));
+app.use(express.static('build/images/item_photos'));
 app.set("view engine", "pug");
 app.set("view", "pages");
 
 
 app.use('/addUser', addUsers);
-//app.use( fileMiddleware.single('choice_img'));
-//app.use('/add_sale_item_admin', add_sale_item_admin);
+app.use('/add_sale_item_base', add_sale_item_base);
+app.use( fileMiddleware.single('multi_choice_img'));
+app.use('/add_item_photos', addFile);
 
 //app.use('/autorization', users_sign_in);
 //app.use('/addtocart', add_to_cart);
+
+
 
 app.get('/', (req,res) => [
     res.sendfile(path.join(__dirname,"build","pages",'index.html'))
@@ -133,12 +140,17 @@ gulp.task('copy:fonts', function() {
 /* ------------ Copy images ------------- */
 gulp.task('copy:images', function() {
     return gulp.src('./source/images/**/*.*','./source/images/carusel/**/*.*')
-        .pipe(gulp.dest('build/images'));
+        .pipe(gulp.dest('build/images'))
+
+});
+
+gulp.task('copy:item_photos', function() {
+    return gulp.src('./source/item_photos/**/*.*')
+        .pipe(gulp.dest('build/images/item_photos'))
 });
 
 /* ------------ Copy ------------- */
-gulp.task('copy', gulp.parallel('copy:fonts', 'copy:images'));
-
+gulp.task('copy', gulp.parallel('copy:fonts', 'copy:images','copy:item_photos'));
 
 /* ------------ js ------------- */
 
@@ -152,7 +164,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('js_routes', function () {
-    return gulp.src(['./source/routes/addUser.js', './source/routes/authorization.js', './source/routes/sale_item.js'])
+    return gulp.src(['./source/routes/addUser.js', './source/routes/addFile.js', './source/routes/add_sale_item_base.js'])
         // .pipe(sourcemaps.init())
         // .pipe(concat('addUser.min.js'))
         // .pipe(uglify())
@@ -161,7 +173,7 @@ gulp.task('js_routes', function () {
 });
 
 gulp.task('js_models', function () {
-    return gulp.src(['./source/models/add_users.js','./source/models/file.js'])  //,'./source/models/sale_item.js'
+    return gulp.src(['./source/models/add_users.js','./source/models/file.js','./source/models/file_middleware.js','./source/models/add_sale_item_base.js'])
         // .pipe(sourcemaps.init())
         // .pipe(concat('add_users.min.js'))
         // .pipe(uglify())

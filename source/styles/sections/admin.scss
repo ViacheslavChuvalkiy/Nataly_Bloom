@@ -172,3 +172,46 @@
   padding: 10px;
   list-style: none;
 }
+
+.count_size{
+  display: inline-block;
+  width: 200px;
+  height: auto;
+  margin-left: 15px;
+
+}
+
+.count_size_elem{
+
+  display: flex;
+  align-items: center;
+  height: 20px;
+  margin-bottom: 15px;
+
+  & input[name = 'count_item'] {
+    width: 30%;
+    margin-top: 10px;
+  }
+
+  & p{
+    width: 20%;
+    height: 15px;
+    margin: 0;
+  }
+}
+
+.add_item_photos_form{
+
+  margin-top: 130px;
+  width: 100%;
+  border: 1px solid grey;
+
+}
+
+.admin_form{
+  display: none;
+}
+
+.active_admin_form{
+  display: block !important;
+}

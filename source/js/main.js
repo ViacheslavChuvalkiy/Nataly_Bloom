@@ -38,5 +38,11 @@ window.onload = (function() {
     $('#input_other_img')[0].addEventListener('input',addEventShowOthersAddImage,false);
     $('#clear_photo')[0].addEventListener('click',clear_photo_in_admin_page,false);
 
+    var admin_items_li = $('.sidebar_admin_li');
+
+    for(var i =0; i <= admin_items_li.length; i++){
+        admin_items_li[i].addEventListener('click',slide_active_admin_form)
+    };
+
 });
 

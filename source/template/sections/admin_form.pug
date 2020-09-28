@@ -3,16 +3,16 @@ div.sidebar_admin
     ul.sidebar_admin_ul
 
 container.add_sale_items
-    a Добавить товар
-    form(action="/add_sale_item_admin", method= 'POST' enctype="multipart/form-data").add_sale_items_form
 
+    form(action="/add_sale_item_base", method= 'POST').add_sale_items_form.admin_form
+        a Добавить товар
         div.main_image_admin_form
             p Основное фото товара
-        input(id = 'input_img', name = 'input_img', type = "file", alt= 'Выбрать основное фото товара', accept="image/jpeg,image/png,image/gif" required)
+        input(id = 'input_img', name = 'choice_img', type = "file", alt= 'Выбрать основное фото товара', accept="image/jpeg,image/png,image/gif" required)
 
         p.additions_photo Фото товара
         div.others_image_admin_form
-        input(id = 'input_other_img', name = 'input_other_img', type = "file", alt= 'Выбрать фото товара', accept="image/jpeg,image/png,image/gif" multiple required)
+        input(id = 'input_other_img', name = 'multi_choice_img', type = "file", alt= 'Выбрать фото товара', accept="image/jpeg,image/png,image/gif" multiple)
         button.btn_clear(id='clear_photo') Очистить
 
         div.main_options_admin_form
@@ -21,8 +21,26 @@ container.add_sale_items
                 option Категория
                     each item,index in ['Блузы', 'Рубашки', 'Платья', 'Юбки', 'Брюки', 'Джемперы', 'Свитеры', 'Кардиганы', 'Кофты', 'Пиджаки', 'Костюмы']
                         option(value = item, id = 'category', name = 'category',  required) #{item}
-            textarea(id = 'tittle', name = 'tittle', type = "text", placeholder = "Введите наименование" required )
-            textarea(id = 'describe', name = 'describe', type = "text", placeholder = "Введите описание" required )
             input(id = 'price', name = 'price', type = "number", step= '50', placeholder = "Введите цену" required)
+            div.count_size
+                div.count_size_elem
+                    p XS:
+                    input(type="number",  id ="count_XS",name="count_item", value="0", step= '10', min = '0', placeholder = "количество")
+                div.count_size_elem
+                    p S:
+                    input(type="number",  id ="count_S", name="count_item", value="0", step= '10', min = '0', placeholder = "количество")
+                div.count_size_elem
+                    p M:
+                    input(type="number",  id ="count_M", name="count_item", value="0", step= '10', min = '0', placeholder = "количество")
+                div.count_size_elem
+                    p L:
+                    input(type="number",  id ="count_L", name="count_item", value="0", step= '10', min = '0', placeholder = "количество")
+
+            textarea(id = 'title', name = 'title', type = "text", placeholder = "Введите наименование"  )
+            textarea(id = 'describe', name = 'describe', type = "text", placeholder = "Введите описание"  )
 
         button.btn_add(type = "submit", id='add_item')  Добавить
+
+    form(action="/add_item_photos", method= 'POST' enctype='multipart/form-data').add_item_photos_form.admin_form
+        input(id = 'add_item_img', name = 'multi_choice_img', type = "file", alt= 'Выбрать фото товара', accept="image/jpeg,image/png,image/gif" )
+        button.btn_add(type = "submit")  Добавить

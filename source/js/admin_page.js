@@ -55,27 +55,63 @@ function clear_photo_in_admin_page() {
     }
 }
 
-
 function addSideBarAdmin() {
 
     var main__list = $('.sidebar_admin_ul');
-    options_list = ['Добавить товар', 'Изменить товар', 'Удалить товар', 'Настроить основною страницу', 'Настроить основную страницу лукбук'];
+    options_list = [{name: 'Добавить товар',
+                        form: 'add_sale_items_form'},
+                    {name: 'Изменить товар',
+                        form: 'add_sale_items_form'},
+                    {name: 'Удалить товар',
+                        form: 'add_sale_items_form'},
+                    {name: 'Настроить основною страницу',
+                        form: 'add_sale_items_form'},
+                    {name: 'Настроить основную страницу лукбук',
+                        form: 'add_sale_items_form'},
+                    {name: 'Загрузить фото на сервер',
+                        form: 'add_item_photos_form'}
+                        ];
 
-    for (var i = 0; i< main__list.length; i++) {
+        var item = main__list[0];
 
-        var item = main__list[i];
-
-        for (var c =0; c < options_list.length; c++) {
+        for (var c = 0; c < options_list.length; c++) {
 
             var child = document.createElement("li");
             child.classList.add('sidebar_admin_li');
-            child.href = '#';
-            var text = document.createTextNode(options_list[c]);
+            child.href = options_list[c].form;
+
+            var text = document.createTextNode(options_list[c].name);
 
             child.appendChild(text);
 
             item.appendChild(child);
-        };
-    };
+        }
 
+
+}
+
+function slide_active_admin_form(event) {
+
+    var current_form = event.target.href;
+
+    var admin_forms = $('.admin_form');
+
+    for (var i = 0; i <= admin_forms.length; i++ ){
+
+        var temp_form = admin_forms[i];
+
+        if(!temp_form){
+            continue;
+        }
+
+        if(temp_form.classList.contains('active_admin_form')){
+            temp_form.classList.remove('active_admin_form');
+        }
+        else {
+            continue;
+        }
+    }
+
+    var active_form = $('.' + current_form);
+    active_form[0].classList.add('active_admin_form');
 }

@@ -13,15 +13,15 @@
 <div class="sidebar_admin">
   <ul class="sidebar_admin_ul"></ul>
 </div>
-<container class="add_sale_items"><a>Добавить товар</a>
-  <form class="add_sale_items_form" action="/add_sale_item_admin" method="POST" enctype="multipart/form-data">
+<container class="add_sale_items">
+  <form class="add_sale_items_form admin_form" action="/add_sale_item_base" method="POST"><a>Добавить товар</a>
     <div class="main_image_admin_form">
       <p>Основное фото товара</p>
     </div>
-    <input id="input_img" name="input_img" type="file" alt="Выбрать основное фото товара" accept="image/jpeg,image/png,image/gif" required>
+    <input id="input_img" name="choice_img" type="file" alt="Выбрать основное фото товара" accept="image/jpeg,image/png,image/gif" required>
     <p class="additions_photo">Фото товара</p>
     <div class="others_image_admin_form"></div>
-    <input id="input_other_img" name="input_other_img" type="file" alt="Выбрать фото товара" accept="image/jpeg,image/png,image/gif" multiple required>
+    <input id="input_other_img" name="multi_choice_img" type="file" alt="Выбрать фото товара" accept="image/jpeg,image/png,image/gif" multiple>
     <button class="btn_clear" id="clear_photo">Очистить</button>
     <div class="main_options_admin_form">
       <p>Описание товара</p>
@@ -40,11 +40,33 @@
           <option value="Костюмы" id="category" name="category" required>Костюмы</option>
         </option>
       </select>
-      <textarea id="tittle" name="tittle" type="text" placeholder="Введите наименование" required></textarea>
-      <textarea id="describe" name="describe" type="text" placeholder="Введите описание" required></textarea>
       <input id="price" name="price" type="number" step="50" placeholder="Введите цену" required>
+      <div class="count_size">
+        <div class="count_size_elem">
+          <p>XS:</p>
+          <input type="number" id="count_XS" name="count_item" value="0" step="10" min="0" placeholder="количество">
+        </div>
+        <div class="count_size_elem">
+          <p>S:</p>
+          <input type="number" id="count_S" name="count_item" value="0" step="10" min="0" placeholder="количество">
+        </div>
+        <div class="count_size_elem">
+          <p>M:</p>
+          <input type="number" id="count_M" name="count_item" value="0" step="10" min="0" placeholder="количество">
+        </div>
+        <div class="count_size_elem">
+          <p>L:</p>
+          <input type="number" id="count_L" name="count_item" value="0" step="10" min="0" placeholder="количество">
+        </div>
+      </div>
+      <textarea id="title" name="title" type="text" placeholder="Введите наименование"></textarea>
+      <textarea id="describe" name="describe" type="text" placeholder="Введите описание"></textarea>
     </div>
     <button class="btn_add" type="submit" id="add_item"> Добавить</button>
+  </form>
+  <form class="add_item_photos_form admin_form" action="/add_item_photos" method="POST" enctype="multipart/form-data">
+    <input id="add_item_img" name="multi_choice_img" type="file" alt="Выбрать фото товара" accept="image/jpeg,image/png,image/gif">
+    <button class="btn_add" type="submit"> Добавить</button>
   </form>
 </container>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

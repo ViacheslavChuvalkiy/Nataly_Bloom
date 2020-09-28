@@ -2,10 +2,7 @@ var mongoose = require('mongoose');
 
 var SchemaSaleItems = mongoose.Schema(
     {
-        id: {
-            type: String,
-            required: true
-        },
+
         tittle: {
             type: String,
             required: true
